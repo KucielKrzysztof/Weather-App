@@ -1,7 +1,12 @@
-export default function City({ cityObj }) {
+export default function City({ cityObj, children, onSelectCity }) {
 	const { id, name, latitude, longitude, timezone, country } = cityObj;
 	return (
-		<div>
+		<div
+			onClick={() => {
+				onSelectCity(cityObj);
+			}}
+		>
+			{children}
 			<p>{id}</p>
 			<p>{name}</p>
 			<p>{latitude}</p>
