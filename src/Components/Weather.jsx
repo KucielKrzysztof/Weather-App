@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Error from "./Error";
+import DisplayWeather from "./DisplayWeather";
 
 export default function Weather({ selectedCity }) {
 	const [weatherRequest, setWeatherRequest] = useState({ data: null, error: null, loading: null });
@@ -11,7 +13,7 @@ export default function Weather({ selectedCity }) {
 			setWeatherRequest({ data: null, error: false, loading: true });
 			try {
 				const res = await fetch(
-					`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&timezone=${timezone}`,
+					`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&timezone=${timezone}`,
 					{ signal: controller.signal }
 				);
 				if (!res.ok) throw new Error("Something went wrong. Please try again later");
@@ -30,17 +32,12 @@ export default function Weather({ selectedCity }) {
 
 	const { data, error, loading } = weatherRequest;
 	const { current } = data || {};
-	const { time, temperature_2m: temperature } = current || {};
+	const { time, temperature_2m: temperature, weather_code } = current || {};
 	return (
-		
-		<div style={{ backgroundColor: "red" }}>
-			<p>{name}</p>
-			<p>{country}</p>
-			<p>latitude: {latitude}</p>
-			<p>longitude: {longitude}</p>
-			<p>timezone: {timezone}</p>
-			<p>temp: {temperature}</p>
-			<p>time: {time}</p>
+		<div className="weather-display-box glass-effect">
+			{error && <Error />}
+			{loading && <p>Loading...</p>}
+			{!loading && !error && <DisplayWeather data={{ name, country, latitude, longitude, timezone, temperature, time, weather_code }} />}
 		</div>
 	);
 }

@@ -1,18 +1,17 @@
-export default function City({ cityObj, children, onSelectCity }) {
-	const { id, name, latitude, longitude, timezone, country } = cityObj;
+export default function City({ cityObj, onSelectCity }) {
+	const { name, timezone, country, admin1 } = cityObj;
 	return (
-		<div
+		<li
 			onClick={() => {
 				onSelectCity(cityObj);
 			}}
 		>
-			{children}
-			<p>{id}</p>
-			<p>{name}</p>
-			<p>{latitude}</p>
-			<p>{longitude}</p>
-			<p>{timezone}</p>
-			<p>{country}</p>
-		</div>
+			<p>
+				<p>
+					<strong>{name}</strong>
+				</p>
+				{country}, {admin1}, {timezone}
+			</p>
+		</li>
 	);
 }
