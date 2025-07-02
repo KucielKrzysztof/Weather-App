@@ -65,6 +65,9 @@ export default function CitySearch({
 				setCityRequest({ data: data.results, error: false, loading: false });
 			} catch (error) {
 				console.log(error);
+				if (error.name === "AbortError") {
+					return;
+				}
 				setCityRequest({ data: null, error: error.message, loading: false });
 			}
 		}
