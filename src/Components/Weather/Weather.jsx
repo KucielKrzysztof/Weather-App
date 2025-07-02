@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Error from "./Error";
+import Error from "../Error";
 import DisplayWeather from "./DisplayWeather";
 
-export default function Weather({ selectedCity }) {
+export default function Weather({ selectedCity, onClearCity }) {
 	const [weatherRequest, setWeatherRequest] = useState({ data: null, error: null, loading: null });
 	const { latitude, longitude, name, country, timezone } = selectedCity;
 
@@ -28,7 +28,7 @@ export default function Weather({ selectedCity }) {
 		return () => {
 			controller.abort();
 		};
-	}, [selectedCity]);
+	}, [selectedCity, latitude, longitude, timezone]);
 
 	const { data, error, loading } = weatherRequest;
 	const { current } = data || {};
@@ -37,7 +37,9 @@ export default function Weather({ selectedCity }) {
 		<div className="weather-display-box glass-effect">
 			{error && <Error />}
 			{loading && <p>Loading...</p>}
-			{!loading && !error && <DisplayWeather data={{ name, country, latitude, longitude, timezone, temperature, time, weather_code }} />}
+			{!loading && !error && (
+				<DisplayWeather onClearCity={onClearCity} data={{ name, country, latitude, longitude, timezone, temperature, time, weather_code }} />
+			)}
 		</div>
 	);
 }

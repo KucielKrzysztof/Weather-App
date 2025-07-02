@@ -6,12 +6,12 @@ export default function City({ cityObj, onSelectCity }) {
 				onSelectCity(cityObj);
 			}}
 		>
-			<p>
+			<div style={{ marginBottom: "0.4rem" }}>
 				<p>
 					<strong>{name}</strong>
 				</p>
 				{country}, {admin1}, {timezone}
-			</p>
+			</div>
 		</li>
 	);
 }

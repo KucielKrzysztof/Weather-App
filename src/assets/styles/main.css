@@ -3,68 +3,121 @@
 body {
 	margin: 0 auto;
 	font-family: "Montserrat", sans-serif;
-	background-image: url("../nordic.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed; /* Paralax */
+	background-color: black;
 	min-height: 100vh;
 	color: #ffff;
 }
 .background-blur {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	inset: 0;
+	z-index: -1;
 	background-image: url("../nordic.jpg");
 	background-size: cover;
 	background-position: center;
+	background-attachment: fixed; /* Paralax */
 	filter: blur(8px);
-	z-index: -1;
+}
+/* przyciemnienie */
+.background-blur::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.2);
 }
 .box {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: 0 0.4rem;
+	min-height: 100vh;
 }
-.search {
+.CitySearch-wrapper {
+	/* 	width: 100%; */
+	display: contents;
+}
+
+.search-wrapper {
 	margin-top: 1rem;
-	color: #ffff;
 	width: 100%;
 	max-width: 30rem;
+	display: flex; /* ułóż input i przycisk obok siebie */
+	align-items: center; /* wyrównaj je pionowo */
+}
+.search {
+	height: 3.1rem;
+	border-radius: 1.1rem 0 0 1.1rem;
+	color: #ffff;
+	width: 90%;
+	max-width: 27rem;
 	box-sizing: border-box;
+}
+.btn-search {
+	height: 3.1rem;
+	width: 10%;
+	color: #ffff;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 0 1rem 1rem 0;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
 }
 input:focus {
 	outline: none;
+	box-shadow: none;
+	border-color: none;
 }
+
+.search-wrapper:hover {
+	transform: scale(1.03);
+}
+input::placeholder {
+	color: #fff;
+	opacity: 0.5;
+}
+
 .city-list {
 	position: absolute;
 	top: 4.5rem; /* dopasuj wg wysokości inputa */
-
 	width: 100%;
 	max-width: 30rem;
 	box-sizing: border-box;
 	z-index: 1000;
+	border-radius: 1.1rem;
 }
 .city-list li {
-	list-style-type: none;
+	list-style: none;
 	border-bottom: 1px solid #c7bcbc;
+	padding: 0.3rem;
+	cursor: pointer;
+	padding-left: 1rem;
 }
-
+.city-list ul {
+	padding: 0;
+	margin: 0;
+}
+li,
+input,
+.search-wrapper:hover,
+.btn-clear:hover {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 .weather-display-box {
 	margin-top: 1rem;
-
 	width: 100%;
 	max-width: 30rem;
 	box-sizing: border-box;
 	z-index: 1;
+	align-self: center;
+	border-radius: 1.1rem;
 }
 .weather-display {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 4rem 0 2rem 0;
 }
 .weather-display .name {
 	font-size: 2rem;
@@ -82,13 +135,31 @@ input:focus {
 	align-items: center;
 	padding-bottom: 1rem;
 }
+.btn-clear {
+	margin-top: 2rem;
+	background-color: transparent;
+	border: none;
+	font-size: 1.5rem;
+}
 
+.btn-clear:hover {
+	transform: scale(1.2);
+}
+
+/* Glass effect */
 .glass-effect {
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
-	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	padding: 1rem;
+}
+
+/* List item pop-out */
+
+li:hover {
+	transform: scale(1.03);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	border-radius: 1.1rem;
 }
