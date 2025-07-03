@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { weatherCodesMap } from "../../assets/weatherCodes";
 
 export default function DisplayWeather({ data, onClearCity }) {
 	const { name, country, timezone, temperature, time, weather_code } = data;
+	const replaceTime = time?.replace?.("T", " - ") ?? "—";
+
+	useEffect(() => {
+		console.log("i got rendered.");
+	});
 	return (
 		<div className="weather-display">
 			<div className="name">
@@ -18,9 +24,13 @@ export default function DisplayWeather({ data, onClearCity }) {
 				</div>
 			</div>
 
-			<div>timezone: {timezone}</div>
+			<div>
+				<strong>timezone:</strong> {timezone}
+			</div>
 
-			<div>time: {time}</div>
+			<div>
+				<strong>time:</strong> {replaceTime}
+			</div>
 			<button className="btn-clear" onClick={onClearCity}>
 				❌
 			</button>

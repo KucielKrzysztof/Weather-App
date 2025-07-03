@@ -1,12 +1,56 @@
-# React + Vite
+# 🌤️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist weather app built with React, using the Open-Meteo API and browser geolocation. It allows users to search for cities, view current weather, and get weather for their current location.
 
-Currently, two official plugins are available:
+> [!WARNING]
+> This project was developed personally as a learning exercise and an experiment with React and API integration. It is not intended for everyday use and is not deployed or hosted publicly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Screenshots](#screenshots)
+4. [How to run](#how-to-run)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- 🔍 City search with suggestions.
+- 📍 "Use my location" via browser geolocation.
+- 🌡️ Current temperature and weather.
+- 🕒 Displays timezone and local time.
+- 💾 Saves selected location to localStorage.
+- ⚠️ Error handling and empty results support.
+- ✨ Simple and clean UI.
+- 🧠 Intuitive UX (keypress shortcuts, hover tooltips, graceful loading and fetch handling).
+
+## Tech Stack
+
+- React <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" width="14" height="13"/>
+- Open-Meteo API <img src="https://community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/d/e/de6bed8f06b3e5a0ab03bb5d4369402988ec3d52.png" alt="Open‑Meteo Logo" width="14" height="13" />
+
+- HTML5 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML logo" width="15" height="15" />
+- CSS<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS Logo" width="15" height="15" />
+
+## Screenshots
+
+### Start Page
+
+![screen1](./screenshots/startpage.png)
+
+### Search
+
+![screen2](./screenshots/search1.png)
+![screen3](./screenshots/search2.png)
+
+### Weather
+
+![screen3](./screenshots/weather.png)
+
+## How to run
+
+```bash
+https://github.com/KucielKrzysztof/Weather-App.git
+cd weather-app
+npm i
+npm run dev
+```

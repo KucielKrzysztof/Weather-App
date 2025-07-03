@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Weather from "./Components/Weather/Weather";
 import "./assets/styles/main.css";
 import CitySearch from "./Components/Search/CitySearch";
+import DisplayStart from "./Components/Weather/DisplayStart";
 
 function App() {
 	const [query, setQuery] = useState("");
@@ -69,7 +70,7 @@ function App() {
 					setSelectedCity={setSelectedCity}
 				/>
 
-				{selectedCity?.id && <Weather selectedCity={selectedCity} onClearCity={clearCity} />}
+				{selectedCity?.id ? <Weather selectedCity={selectedCity} onClearCity={clearCity} /> : <DisplayStart />}
 			</div>
 		</>
 	);
