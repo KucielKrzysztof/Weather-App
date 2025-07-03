@@ -27,6 +27,7 @@ A minimalist weather app built with React, using the Open-Meteo API and browser 
 
 - React <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" width="14" height="13"/>
 - Open-Meteo API <img src="https://community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/d/e/de6bed8f06b3e5a0ab03bb5d4369402988ec3d52.png" alt="Open‑Meteo Logo" width="14" height="13" />
+- Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/2078px-Vitejs-logo.svg.png" alt="React Logo" width="14" height="13"/>
 
 - HTML5 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML logo" width="15" height="15" />
 - CSS<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS Logo" width="15" height="15" />
