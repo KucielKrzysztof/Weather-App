@@ -3,34 +3,35 @@
 A minimalist weather app built with React, using the Open-Meteo API and browser geolocation. It allows users to search for cities, view current weather, and get weather for their current location.
 
 > [!WARNING]
-> This project was developed personally as a learning exercise and an experiment with React and API integration. It is not intended for everyday use and is not deployed or hosted publicly.
+> This project was developed personally as a learning exercise and an experiment with React and API integration. It is not intended for everyday use.
 
 ## Table of Contents
 
 1. [Features](#features)
-2. [Tech Stack](#tech-stack)
-3. [Screenshots](#screenshots)
-4. [How to run](#how-to-run)
+2. [Architecture Highlights](#architecture-highlights)
+3. [Tech Stack](#tech-stack)
+4. [Screenshots](#screenshots)
+5. [How to run](#how-to-run)
 
 ## Features
 
 - 🔍 City search with suggestions.
 - 📍 "Use my location" via browser geolocation.
-- 🌡️ Current temperature and weather.
-- 🕒 Displays timezone and local time.
+- 🌡️ Detailed Weather Display: Current temperature, weather conditions, wind speed, humidity, and pressure.
+- 📅 7-Day Forecast: Displays maximum and minimum temperatures for the upcoming week.
 - 💾 Saves selected location to localStorage.
-- ⚠️ Error handling and empty results support.
+- ⚠️ Error handling and loading states (with custom CSS spinner)
 - ✨ Simple and clean UI.
-- 🧠 Intuitive UX (keypress shortcuts, hover tooltips, graceful loading and fetch handling).
+- 🧠 Intuitive UX (keypress shortcuts, graceful loading and fetch handling).
 
 ## Tech Stack
 
-- React <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" width="14" height="13"/>
-- Open-Meteo API <img src="https://community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/d/e/de6bed8f06b3e5a0ab03bb5d4369402988ec3d52.png" alt="Open‑Meteo Logo" width="14" height="13" />
-- Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/2078px-Vitejs-logo.svg.png" alt="React Logo" width="14" height="13"/>
-
-- HTML5 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML logo" width="15" height="15" />
-- CSS<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS Logo" width="15" height="15" />
+| Category        | Technologies                                                                                                                                                                                                                                                                                                                                                                                          |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frontend**    | ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) |
+| **State/Cache** | ![TanStack Query](https://img.shields.io/badge/TanStack%20Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)                                                                                                                                                                                                                                                                           |
+| **API**         | ![Open-Meteo API](https://img.shields.io/badge/Open--Meteo-blue?style=for-the-badge&logo=react&logoColor=white&labelColor=2C3E50)                                                                                                                                                                                                                                                                     |
+| **Styling**     | Glassmorphism, Responsive Design, Custom Scrollbars                                                                                                                                                                                                                                                                                                                                                   |
 
 ## Screenshots
 
