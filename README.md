@@ -42,7 +42,6 @@ A minimalist weather app built with React, using the Open-Meteo API and browser 
 ### Search
 
 ![screen2](./screenshots/search1.png)
-![screen3](./screenshots/search2.png)
 
 ### Weather
 

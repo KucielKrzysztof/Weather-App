@@ -15,7 +15,7 @@ function App() {
 				<CityProvider>
 					<AppLayout>
 						<AppContent />
-						<ReactQueryDevtools />
+						{/* <ReactQueryDevtools /> */}
 					</AppLayout>
 				</CityProvider>
 			</QueryClientProvider>
