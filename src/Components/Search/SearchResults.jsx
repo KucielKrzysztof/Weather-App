@@ -1,5 +1,5 @@
 import CitiesList from "./CitiesList";
-import Error from "../Error";
+import Error from "../ui/Error";
 
 export default function SearchResults({ cityRequest, handleSelectCity, isListClosed }) {
 	return (

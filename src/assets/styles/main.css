@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0 auto;
 	font-family: "Montserrat", sans-serif;
@@ -29,7 +39,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 0 0.4rem;
+	padding: 0 1rem;
 	min-height: 100vh;
 }
 .CitySearch-wrapper {
@@ -41,8 +51,8 @@ body {
 	margin-top: 1rem;
 	width: 100%;
 	max-width: 30rem;
-	display: flex; /* ułóż input i przycisk obok siebie */
-	align-items: center; /* wyrównaj je pionowo */
+	display: flex;
+	align-items: center;
 }
 .search {
 	height: 3.1rem;
@@ -83,13 +93,22 @@ input::placeholder {
 
 .city-list {
 	position: absolute;
-	top: 4.5rem; /* dopasuj wg wysokości inputa */
+	top: 4.5rem;
 	width: 100%;
 	max-width: 30rem;
 	box-sizing: border-box;
 	z-index: 1000;
 	border-radius: 1.1rem;
 }
+
+.city-list-items {
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
 .city-list li {
 	list-style: none;
 	border-bottom: 1px solid #c7bcbc;
@@ -126,46 +145,231 @@ input,
 	margin-top: 1rem;
 }
 
-.weather-display-box {
+/* WEATHER DISPLAY */
+
+.weather-card-layout {
 	margin-top: 1rem;
 	width: 100%;
 	max-width: 30rem;
 	box-sizing: border-box;
 	z-index: 1;
 	align-self: center;
+}
+
+.weather-display-box {
+	width: 100%;
 	border-radius: 1.1rem;
 }
 .weather-display {
+	padding: 2rem 1rem;
+}
+
+.header-row {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
-	padding: 4rem 0 2rem 0;
+	padding-bottom: 0.5rem;
 }
-.weather-display .name {
-	font-size: 2rem;
-}
-.weather-display .temp {
-	padding: 3rem 0 1rem 0;
-	font-size: 3.5rem;
-}
-.weather-display p {
+
+.location-name {
 	margin: 0;
+	font-size: 1.8rem;
+	font-weight: 700;
 }
-.weather-display .w-codes {
+
+.country-name {
+	display: block;
+	margin-top: -0.5rem;
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+.main-weather-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 1.5rem 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.temp-large {
+	font-size: 5rem;
+	font-weight: 700;
+}
+
+.w-codes-main {
+	text-align: right;
+}
+
+.weather-icon-large {
+	font-size: 4rem;
+	line-height: 1;
+}
+.weather-description {
+	font-size: 1rem;
+	font-weight: 600;
+	margin-top: 0.2rem;
+}
+
+.details-wrapper {
+	width: 100%;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.details {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	padding-bottom: 1rem;
+
+	width: 100%;
+	border-radius: 1.1rem;
 }
+
+.detail-item {
+	padding: 0.3rem 1rem;
+}
+
+.detail-item small {
+	opacity: 0.7;
+	white-space: normal;
+}
+
+.detail-item strong {
+	font-size: 0.9rem;
+	margin-top: 0.2rem;
+	line-height: 1.2;
+}
+
 .btn-clear {
-	margin-top: 2rem;
-	background-color: transparent;
-	border: none;
-	font-size: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	font-size: 1.2rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	line-height: 1;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn-clear:hover {
-	transform: scale(1.2);
+	background-color: rgba(255, 255, 255, 0.2);
+	transform: scale(1.05);
+}
+
+.weather-display .btn-clear {
+	margin-top: 0;
+}
+
+/* 7 DAYS FORECAST */
+
+.forecast-wrapper {
+	width: 100%;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	padding: 1rem;
+	border-radius: 1.1rem;
+}
+
+.forecast-title {
+	margin: 0 0 1rem 0;
+	font-size: 1.1rem;
+	font-weight: 600;
+	opacity: 0.8;
+}
+
+.forecast-grid {
+	display: flex; /* Używamy flex, żeby można było przewijać poziomo */
+	gap: 1rem;
+	overflow-x: auto; /* Włączamy przewijanie poziome */
+	padding-bottom: 0.5rem; /* Żeby pasek przewijania nie przeszkadzał */
+	align-items: stretch;
+	height: 100%;
+
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.forecast-item {
+	flex-shrink: 0;
+	width: 70px;
+	text-align: center;
+	padding: 0.5rem 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.day-label {
+	display: block;
+	font-size: 0.7rem;
+	opacity: 0.6;
+	line-height: 1.2;
+	margin-bottom: 0;
+}
+
+.weather-icon-small {
+	font-size: 1.5rem;
+	margin: 0;
+}
+
+.temps {
+	margin-top: 0.3rem;
+}
+
+.temp-max {
+	font-weight: 700;
+	margin-right: 0.2rem;
+}
+
+.temp-min {
+	font-size: 0.8rem;
+	opacity: 0.6;
+}
+
+/* SCROLLBARS */
+
+.forecast-grid::-webkit-scrollbar,
+.city-list-items::-webkit-scrollbar {
+	height: 6px;
+	width: 6px;
+}
+.forecast-grid::-webkit-scrollbar-thumb,
+.city-list-items::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+}
+
+/* Loader */
+.loader-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
+}
+.spinner {
+	width: 50px;
+	height: 50px;
+	border: 5px solid rgba(255, 255, 255, 0.3);
+	border-top-color: #ffffff;
+	border-radius: 50%;
+	animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.loader-container p {
+	margin-top: 1rem;
+	font-weight: 600;
 }
 
 /* Glass effect */
@@ -181,7 +385,41 @@ input,
 /* List item pop-out */
 
 li:hover {
-	transform: scale(1.03);
+	transform: scale(0.99);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	border-radius: 1.1rem;
+}
+
+/* W sekcji .main-weather-info */
+.temp-large {
+	font-size: 5rem;
+	font-weight: 700;
+}
+
+/* DODAJ ZAPYTANIE MEDIALNE NA KONIEC PLIKU */
+@media (max-width: 480px) {
+	/* Zmniejszanie czcionki temperatury na małych telefonach */
+	.temp-large {
+		font-size: 4rem;
+	}
+
+	/* Zmniejszanie ikony na małych telefonach */
+	.weather-icon-large {
+		font-size: 3rem;
+	}
+
+	/* Zmniejszenie odstępu głównej sekcji */
+	.main-weather-info {
+		padding: 1rem 0;
+	}
+
+	/* Dopasowanie przycisku wyszukiwania */
+	.btn-search {
+		padding: 0.5rem; /* Mniejszy padding */
+	}
+
+	/* Drobne zmniejszenie marginesów w liście miast */
+	.city-list li {
+		padding: 0.2rem 0.5rem;
+	}
 }
