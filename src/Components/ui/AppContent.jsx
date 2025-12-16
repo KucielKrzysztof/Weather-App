@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Weather from "../Weather/Weather";
 import CitySearch from "../Search/CitySearch";
 import DisplayStart from "../Weather/DisplayStart";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useCity } from "../../context/CityContext";
+import { useEscape } from "../../hooks/useEscape";
 
 function AppContent() {
 	const { selectedCity, setSelectedCity, clearCity } = useCity();
@@ -23,24 +24,12 @@ function AppContent() {
 
 	function handleSelectCity(cityObj) {
 		if (!selectedCity || selectedCity.id !== cityObj.id) {
-			setSelectedCity(cityObj); // Zmiana stanu w Kontekście
+			setSelectedCity(cityObj);
 			handleCloseSearch();
 		}
 	}
 
-	/* Close Search with ESC key */
-	useEffect(() => {
-		function closeWithEscape(event) {
-			if (event.code === "Escape") {
-				console.log(event.code);
-				handleCloseSearch();
-			}
-		}
-		document.addEventListener("keydown", closeWithEscape);
-		return () => {
-			document.removeEventListener("keydown", closeWithEscape);
-		};
-	}, [handleCloseSearch]);
+	useEscape(handleCloseSearch);
 
 	return (
 		<>

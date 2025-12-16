@@ -1,23 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const CityContext = createContext();
 
 export function CityProvider({ children }) {
-	const [selectedCity, setSelectedCity] = useState(() => {
-		const saved = localStorage.getItem("selectedCity");
-		return saved ? JSON.parse(saved) : null;
-	});
+	const [selectedCity, setSelectedCity] = useLocalStorage("selectedCity", null);
 
 	function clearCity() {
 		setSelectedCity(null);
-		localStorage.removeItem("selectedCity");
 	}
-	/* SAVE to localstorage */
-	useEffect(() => {
-		if (selectedCity) {
-			localStorage.setItem("selectedCity", JSON.stringify(selectedCity));
-		}
-	}, [selectedCity]);
 
 	const contextValue = {
 		selectedCity,

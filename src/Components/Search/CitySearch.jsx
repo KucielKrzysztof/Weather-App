@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
 import { useCitySearch } from "../../hooks/useCitySearch";
 import { useCity } from "../../context/CityContext";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 export default function CitySearch({ handleQuery, query, debouncedQuery, handleCloseSearch, isListClosed, handleSelectCity }) {
 	const searchRef = useRef(null);
@@ -29,18 +30,9 @@ export default function CitySearch({ handleQuery, query, debouncedQuery, handleC
 			}
 		);
 	}
+
 	/* close Search with click outside search*/
-	useEffect(() => {
-		function handleClickOutside(event) {
-			if (searchRef.current && !searchRef.current.contains(event.target)) {
-				handleCloseSearch();
-			}
-		}
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [handleCloseSearch]);
+	useClickOutside(searchRef, handleCloseSearch);
 
 	return (
 		<div ref={searchRef} className="CitySearch-wrapper">
